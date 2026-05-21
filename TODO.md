@@ -32,13 +32,13 @@
 
 ## Phase 3: Authentication
 
-- [ ] Create `src/lib/auth.ts` — Better Auth with Discord provider and Drizzle adapter
+- [x] Create `src/lib/auth.ts` — Better Auth with Discord provider and Drizzle adapter
   - Scopes: `identify`, `guilds`
   - Session expiry: 30 days
-- [ ] Create `src/app/api/auth/[...all]/route.ts` — `toNextJsHandler(auth)`
-- [ ] Run `npx better-auth generate` to create Better Auth's migration SQL
-- [ ] Apply migration via Drizzle: `pnpm drizzle-kit migrate` (or `push` for local dev)
-- [ ] Add OAuth redirect URIs in Discord Developer Portal
+- [x] Create `src/app/api/auth/[...all]/route.ts` — `toNextJsHandler(auth)`
+- [x] Run `pnpm dlx auth@latest generate` to create Better Auth's schema (`src/db/auth-schema.ts`)
+- [x] Apply migration via raw SQL (`CREATE TABLE IF NOT EXISTS` — do not use drizzle-kit)
+- [x] Add OAuth redirect URIs in Discord Developer Portal
   - Local: `http://localhost:3000/api/auth/callback/discord`
   - Production: `https://<domain>/api/auth/callback/discord`
 
