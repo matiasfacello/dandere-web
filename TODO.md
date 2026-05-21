@@ -77,22 +77,22 @@
 
 ## Phase 7: Landing Page (`/`)
 
-- [ ] Replace boilerplate in `src/app/page.tsx`
-- [ ] Create `src/components/hero.tsx`
+- [x] Replace boilerplate in `src/app/page.tsx`
+- [x] Create `src/components/hero.tsx`
   - Heading: bot name + tagline ("Track every voice event in your Discord server")
   - CTA buttons: _Add to Discord_ (primary, indigo) and _Read the docs_ (secondary)
   - Invite URL constructed server-side from env var
-- [ ] Create `src/components/features.tsx`
+- [x] Create `src/components/features.tsx`
   - Grid of cards (shadcn Card)
   - Features: voice join/leave, move detection, stream start/stop, per-user ignore list, bulk clear
-- [ ] Create `src/components/how-it-works.tsx`
+- [x] Create `src/components/how-it-works.tsx`
   - 3-step numbered section
   - Step 1: Add bot, Step 2: Run `/trackvoice-all #channel`, Step 3: Done
-- [ ] Create `src/components/premium-teaser.tsx`
+- [x] Create `src/components/premium-teaser.tsx`
   - "Coming soon" banner
   - Brief list of future premium features
   - CTA: waitlist or "stay tuned" copy (no Stripe, no sign-up)
-- [ ] Wire all sections into `src/app/page.tsx`
+- [x] Wire all sections into `src/app/page.tsx`
 
 ## Phase 8: Docs Page (`/docs`)
 
