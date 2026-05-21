@@ -26,9 +26,9 @@
 
 ## Phase 2: Database Layer
 
-- [ ] Create `src/db/client.ts` — Drizzle + postgres-js, `max: 5`
-- [ ] Create `src/db/schema.ts` — copy `guild` and `premiumSubscription` table definitions from the bot repo (read-only; no bot-managed tables)
-- [ ] Verify TypeScript compiles with the schema
+- [x] Create `src/db/client.ts` — Drizzle + postgres-js, `max: 5`
+- [x] Create `src/db/schema.ts` — copy `guild` and `premiumSubscription` table definitions from the bot repo (read-only; no bot-managed tables)
+- [x] Verify TypeScript compiles with the schema
 
 ## Phase 3: Authentication
 
