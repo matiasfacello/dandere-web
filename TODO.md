@@ -65,14 +65,15 @@
 
 ## Phase 6: Shared Components
 
-- [ ] Create `src/components/navbar.tsx`
+- [x] Create `src/components/navbar.tsx`
   - Logo + site name on the left
   - Links: Home, Docs, Dashboard (server component — reads session server-side to show user avatar or sign-in link)
   - Sign-out dropdown via shadcn DropdownMenu (client component island)
-- [ ] Create `src/components/footer.tsx`
+- [x] Create `src/components/footer.tsx`
   - Invite link (built server-side from `DISCORD_CLIENT_ID` env var)
   - Docs link
   - GitHub link
+- [x] Wire `<Navbar />` and `<Footer />` into `src/app/layout.tsx`
 
 ## Phase 7: Landing Page (`/`)
 
