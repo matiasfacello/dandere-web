@@ -52,16 +52,16 @@
 
 ## Phase 5: Global Layout & Design
 
-- [ ] Update `src/app/globals.css`
+- [x] Update `src/app/globals.css`
   - Remove light/dark CSS variable split — dark mode only
   - Set `--background` to `zinc-950` equivalent (`#09090b`)
   - Set base body color to `zinc-100`
   - Remove the `@media (prefers-color-scheme: dark)` block
-- [ ] Update `src/app/layout.tsx`
+- [x] Update `src/app/layout.tsx`
   - Fix metadata: title `"Dandere"`, description matching the bot tagline
   - Add `dark` class to `<html>` (force dark mode for shadcn)
   - Keep Geist Sans; drop Geist Mono (not needed for this site)
-- [ ] Place the bot logo at `public/logo.svg` (or `logo.png`) — user must provide this file
+- [x] Place the bot logo at `public/logo.svg` (or `logo.png`) — user must provide this file
 
 ## Phase 6: Shared Components
 
