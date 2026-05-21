@@ -2,27 +2,27 @@
 
 ## Phase 1: Project Setup
 
-- [ ] Install production dependencies
+- [x] Install production dependencies
   ```
   pnpm add better-auth drizzle-orm postgres
   ```
-- [ ] Install dev dependencies
+- [x] Install dev dependencies
   ```
   pnpm add -D drizzle-kit
   ```
-- [ ] Initialize shadcn/ui
+- [x] Initialize shadcn/ui
   ```
   pnpm dlx shadcn@latest init
   ```
   - Choose dark theme base, confirm src/ path, confirm Tailwind v4
-- [ ] Install shadcn/ui components
+- [x] Install shadcn/ui components
   ```
   pnpm dlx shadcn@latest add button badge card separator avatar dropdown-menu tooltip skeleton
   ```
-- [ ] Update `next.config.ts` — add `output: "standalone"`
-- [ ] Create `.env.example` with all five env vars (empty values)
-- [ ] Create `Dockerfile` per the spec
-- [ ] Add `drizzle.config.ts` pointing at `src/db/schema.ts` and `DATABASE_URL`
+- [x] Update `next.config.ts` — add `output: "standalone"`
+- [x] Create `.env.example` with all five env vars (empty values)
+- [x] Create `Dockerfile` per the spec
+- [x] Add `drizzle.config.ts` pointing at `src/db/schema.ts` and `DATABASE_URL`
 
 ## Phase 2: Database Layer
 
