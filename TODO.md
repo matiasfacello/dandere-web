@@ -44,7 +44,7 @@
 
 ## Phase 4: Route Protection
 
-- [ ] Create `proxy.ts` at project root (Next.js 16 — replaces `middleware.ts`)
+- [x] Create `proxy.ts` at project root (Next.js 16 — replaces `middleware.ts`)
   - Import `getSessionCookie` from `better-auth/cookies`
   - Export `proxy()` function (not `middleware()`)
   - Redirect unauthenticated `/dashboard/*` requests to `/`
