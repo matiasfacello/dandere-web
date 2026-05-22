@@ -14,6 +14,7 @@
   ```
   pnpm dlx shadcn@latest init
   ```
+
   - Choose dark theme base, confirm src/ path, confirm Tailwind v4
 - [x] Install shadcn/ui components
   ```
@@ -128,10 +129,10 @@
 
 ## Phase 10: Final Polish
 
-- [ ] Verify all pages compile without TypeScript errors (`pnpm build`)
-- [ ] Check that `/dashboard` redirects to `/` when unauthenticated
-- [ ] Verify Discord OAuth login flow end-to-end (local)
-- [ ] Confirm mutual guilds display correctly on dashboard
-- [ ] Audit invite link — must be constructed from env var, never hardcoded
-- [ ] Run `npx next typegen` to generate type helpers for async params
-- [ ] Remove unused default Next.js assets from `public/` (`next.svg`, `vercel.svg`, etc.)
+- [x] Verify all pages compile without TypeScript errors (`pnpm build`)
+- [x] Check that `/dashboard` redirects to `/` when unauthenticated
+- [x] Verify Discord OAuth login flow end-to-end (local)
+- [x] Confirm mutual guilds display correctly on dashboard
+- [x] Audit invite link — must be constructed from env var, never hardcoded
+- [x] Run `npx next typegen` to generate type helpers for async params
+- [x] Remove unused default Next.js assets from `public/` (`next.svg`, `vercel.svg`, etc.)

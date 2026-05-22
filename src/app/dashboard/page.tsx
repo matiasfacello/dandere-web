@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-import { eq, inArray } from "drizzle-orm";
+import { eq, inArray, and } from "drizzle-orm";
 import type { Metadata } from "next";
 import { auth } from "~/lib/auth";
 import { db } from "~/db/client";
@@ -17,7 +17,17 @@ type DiscordGuild = {
   id: string;
   name: string;
   icon: string | null;
+  owner: boolean;
+  permissions: number | string;
 };
+
+const ADMINISTRATOR = 0x8n;
+const MANAGE_GUILD = 0x20n;
+
+function hasManagePermission(guild: DiscordGuild) {
+  const perms = BigInt(guild.permissions);
+  return guild.owner || (perms & ADMINISTRATOR) === ADMINISTRATOR || (perms & MANAGE_GUILD) === MANAGE_GUILD;
+}
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -26,7 +36,7 @@ export default async function DashboardPage() {
   const [accountRow] = await db
     .select({ accessToken: account.accessToken })
     .from(account)
-    .where(eq(account.userId, session.user.id));
+    .where(and(eq(account.userId, session.user.id), eq(account.providerId, "discord")));
 
   const accessToken = accountRow?.accessToken;
 
@@ -49,7 +59,6 @@ export default async function DashboardPage() {
           .select({
             guildId: guild.guildId,
             trackAll: guild.trackAll,
-            logChannelId: guild.logChannelId,
           })
           .from(guild)
           .where(inArray(guild.guildId, userGuildIds))
@@ -57,9 +66,7 @@ export default async function DashboardPage() {
 
   const botGuildMap = new Map(botGuilds.map((g) => [g.guildId, g]));
 
-  const mutualGuilds = userGuilds
-    .filter((g) => botGuildMap.has(g.id))
-    .map((g) => ({ ...g, ...botGuildMap.get(g.id)! }));
+  const mutualGuilds = userGuilds.filter((g) => botGuildMap.has(g.id) && hasManagePermission(g)).map((g) => ({ ...g, ...botGuildMap.get(g.id)! }));
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10">
@@ -68,28 +75,16 @@ export default async function DashboardPage() {
       </div>
 
       <h2 className="mb-1 text-xl font-bold text-zinc-100">Your servers</h2>
-      <p className="mb-6 text-sm text-zinc-400">
-        Servers where both you and Dandere are present.
-      </p>
+      <p className="mb-6 text-sm text-zinc-400">Servers where both you and Dandere are present.</p>
 
       {mutualGuilds.length === 0 ? (
         <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-6 py-12 text-center">
-          <p className="text-zinc-400">
-            No mutual servers found. Add Dandere to a server you&apos;re in to
-            see it here.
-          </p>
+          <p className="text-zinc-400">No mutual servers found. Add Dandere to a server you&apos;re in to see it here.</p>
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {mutualGuilds.map((g) => (
-            <ServerCard
-              key={g.id}
-              guildId={g.id}
-              name={g.name}
-              icon={g.icon}
-              trackAll={g.trackAll}
-              logChannelId={g.logChannelId ?? null}
-            />
+            <ServerCard key={g.id} guildId={g.id} name={g.name} icon={g.icon} trackAll={g.trackAll} />
           ))}
         </div>
       )}
