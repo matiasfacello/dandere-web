@@ -1,18 +1,20 @@
+import { headers } from "next/headers";
+import { auth } from "~/lib/auth";
 import { Hero } from "~/components/hero";
 import { Features } from "~/components/features";
 import { HowItWorks } from "~/components/how-it-works";
+import { DashboardCta } from "~/components/dashboard-cta";
 import { PremiumTeaser } from "~/components/premium-teaser";
-import { Separator } from "~/components/ui/separator";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth.api.getSession({ headers: await headers() });
+
   return (
     <>
       <Hero />
-      <Separator className="bg-border" />
       <Features />
-      <Separator className="bg-border" />
       <HowItWorks />
-      <Separator className="bg-border" />
+      {!session && <DashboardCta />}
       <PremiumTeaser />
     </>
   );

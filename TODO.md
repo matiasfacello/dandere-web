@@ -11,11 +11,13 @@
   pnpm add -D drizzle-kit
   ```
 - [x] Initialize shadcn/ui
+
   ```
   pnpm dlx shadcn@latest init
   ```
 
   - Choose dark theme base, confirm src/ path, confirm Tailwind v4
+
 - [x] Install shadcn/ui components
   ```
   pnpm dlx shadcn@latest add button badge card separator avatar dropdown-menu tooltip skeleton
@@ -136,3 +138,9 @@
 - [x] Audit invite link — must be constructed from env var, never hardcoded
 - [x] Run `npx next typegen` to generate type helpers for async params
 - [x] Remove unused default Next.js assets from `public/` (`next.svg`, `vercel.svg`, etc.)
+
+## Phase 11: Next Steps
+
+- [ ] Create `/privacy` — Privacy Policy page (required for Discord bot verification)
+- [ ] Create `/terms` — Terms of Service page (required for Discord bot verification)
+- [ ] Expand command accordion in `/docs` with parameter details, examples, and edge case notes per command

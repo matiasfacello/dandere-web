@@ -20,21 +20,16 @@ export function UserHeader({ name, image }: Props) {
   }
 
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <Avatar className="h-10 w-10">
-          <AvatarImage src={image ?? undefined} alt={name} />
-          <AvatarFallback>{name[0].toUpperCase()}</AvatarFallback>
-        </Avatar>
-        <div>
-          <p className="font-semibold text-foreground">{name}</p>
-          <p className="text-sm text-muted-foreground">Discord account</p>
-        </div>
-      </div>
+    <div className="flex items-center gap-3 rounded-lg border border-border/50 bg-card/50 px-4 py-2">
+      <Avatar className="h-8 w-8">
+        <AvatarImage src={image ?? undefined} alt={name} />
+        <AvatarFallback className="text-xs">{name[0].toUpperCase()}</AvatarFallback>
+      </Avatar>
+      <span className="text-sm text-foreground">{name}</span>
       <Button
         size="sm"
-        variant="outline"
-        className="border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
+        variant="ghost"
+        className="ml-1 h-7 px-2 text-xs text-muted-foreground hover:text-foreground"
         onClick={handleSignOut}
       >
         Sign out

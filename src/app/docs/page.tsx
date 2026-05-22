@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Separator } from "~/components/ui/separator";
-import { Badge } from "~/components/ui/badge";
+import { DocsNav } from "~/components/docs/docs-nav";
+import { CommandList } from "~/components/docs/command-list";
+import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Docs — Dandere",
@@ -10,84 +11,24 @@ export const metadata: Metadata = {
 
 const gettingStartedSteps = [
   {
-    step: 1,
-    text: (
-      <>
-        Add the bot to your server using the invite link in the navigation bar.
-      </>
-    ),
+    step: "1",
+    title: "Add the bot to your server",
+    description: "Use the invite link in the navigation bar to add Dandere. Grant the requested permissions when prompted.",
   },
   {
-    step: 2,
-    text: (
-      <>
-        Run{" "}
-        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
-          /trackvoice-all #channel
-        </code>{" "}
-        to begin logging voice activity to a text channel.
-      </>
-    ),
+    step: "2",
+    title: "Run /trackvoice-all #channel",
+    description: "In any text channel, run the command and mention the channel where logs should be posted.",
   },
   {
-    step: 3,
-    text: (
-      <>
-        Optionally ignore specific users with{" "}
-        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
-          /trackvoice-ignoreuser @user
-        </code>
-        .
-      </>
-    ),
+    step: "3",
+    title: "Optionally ignore users",
+    description: "Use /trackvoice-ignoreuser @user to exclude bots or specific members from your logs.",
   },
   {
-    step: 4,
-    text: (
-      <>
-        Run{" "}
-        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
-          /trackvoice-disable
-        </code>{" "}
-        to stop tracking at any time.
-      </>
-    ),
-  },
-];
-
-const commands = [
-  {
-    command: "/trackvoice-all #channel",
-    description:
-      "Start tracking all voice channels and post logs to the given text channel.",
-    permission: "Manage Channels",
-  },
-  {
-    command: "/trackvoice-disable",
-    description: "Stop tracking voice channels.",
-    permission: "Manage Channels",
-  },
-  {
-    command: "/trackvoice-ignoreuser @user",
-    description: "Exclude a user from tracking.",
-    permission: "Manage Channels",
-  },
-  {
-    command: "/trackvoice-unignoreuser @user",
-    description: "Stop excluding a user.",
-    permission: "Manage Channels",
-  },
-  {
-    command: "/clear [1–100]",
-    description:
-      "Bulk delete up to 100 messages. Messages older than 14 days are deleted individually.",
-    permission: "Manage Messages",
-  },
-  {
-    command: "/status",
-    description:
-      "Show bot status, database connectivity, and WebSocket ping.",
-    permission: "Administrator",
+    step: "4",
+    title: "Stop tracking any time",
+    description: "Run /trackvoice-disable to stop all voice tracking in your server.",
   },
 ];
 
@@ -99,134 +40,123 @@ const loggedEvents = [
 ];
 
 const botPermissions = [
-  "View Channels",
-  "Send Messages",
+  { label: "View Channels", note: null },
+  { label: "Send Messages", note: null },
   { label: "Manage Messages", note: "required for /clear" },
   { label: "Read Message History", note: "required for /clear" },
 ];
 
 export default function DocsPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
-      <div className="mb-10">
-        <h1 className="text-4xl font-bold tracking-tight text-foreground">
-          Documentation
-        </h1>
-        <p className="mt-2 text-muted-foreground">
-          Everything you need to set up and use Dandere in your Discord server.
-        </p>
-      </div>
+    <main className="mx-auto max-w-6xl px-4 py-12">
+      <div className="flex flex-col gap-10 lg:flex-row">
+        {/* Sidebar */}
+        <aside className="lg:w-56 shrink-0">
+          <DocsNav />
+        </aside>
 
-      {/* Getting Started */}
-      <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-          Getting Started
-        </h2>
-        <ol className="flex flex-col gap-5">
-          {gettingStartedSteps.map(({ step, text }) => (
-            <li key={step} className="flex gap-4">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                {step}
+        {/* Main content */}
+        <div className="flex-1 min-w-0">
+          <div className="mb-12">
+            <h1 className="mb-4 text-4xl font-bold text-foreground">Documentation</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Everything you need to set up and use Dandere in your Discord server.
+            </p>
+          </div>
+
+          {/* Getting Started */}
+          <section id="getting-started" className="mb-16 scroll-mt-20">
+            <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-foreground">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+                1
               </span>
-              <p className="pt-0.5 text-foreground/80 leading-relaxed">{text}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
+              Getting Started
+            </h2>
 
-      <Separator className="mb-12 bg-border" />
+            <div className="rounded-xl border border-border/50 bg-card/30 p-6">
+              <p className="mb-8 text-muted-foreground leading-relaxed">
+                Setting up Dandere is quick and easy. Follow these steps to start logging voice events.
+              </p>
 
-      {/* Command Reference */}
-      <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-          Command Reference
-        </h2>
-        <div className="overflow-x-auto rounded-lg border border-border">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-border bg-card">
-                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
-                  Command
-                </th>
-                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
-                  Description
-                </th>
-                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
-                  Permission
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {commands.map((row, i) => (
-                <tr
-                  key={row.command}
-                  className={
-                    i < commands.length - 1 ? "border-b border-border" : ""
-                  }
-                >
-                  <td className="px-4 py-3 align-top">
-                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-primary">
-                      {row.command}
-                    </code>
-                  </td>
-                  <td className="px-4 py-3 align-top text-muted-foreground">
-                    {row.description}
-                  </td>
-                  <td className="px-4 py-3 align-top">
-                    <Badge
-                      variant="outline"
-                      className="border-border text-muted-foreground whitespace-nowrap"
-                    >
-                      {row.permission}
-                    </Badge>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <div className="space-y-6">
+                {gettingStartedSteps.map((item) => (
+                  <div key={item.step} className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+                      {item.step}
+                    </div>
+                    <div className="flex-1 pt-1">
+                      <h3 className="mb-1 font-semibold text-foreground">{item.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex items-start gap-3 rounded-lg border border-primary/20 bg-primary/5 p-4">
+                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">Pro tip</p>
+                  <p className="text-sm text-muted-foreground">
+                    Use{" "}
+                    <code className="rounded bg-secondary px-1 py-0.5 font-mono text-xs text-primary">
+                      /status
+                    </code>{" "}
+                    anytime to check bot connectivity and WebSocket ping.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Commands */}
+          <CommandList />
+
+          {/* What Gets Logged */}
+          <section id="what-gets-logged" className="mb-16 scroll-mt-20">
+            <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-foreground">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+                3
+              </span>
+              What Gets Logged
+            </h2>
+
+            <div className="rounded-xl border border-border/50 bg-card/30 p-6">
+              <ul className="space-y-3">
+                {loggedEvents.map((event) => (
+                  <li key={event} className="flex items-center gap-3 text-foreground/80">
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-green-500" />
+                    {event}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* Bot Permissions */}
+          <section id="bot-permissions" className="mb-16 scroll-mt-20">
+            <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-foreground">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 text-sm font-bold text-primary">
+                4
+              </span>
+              Bot Permissions Required
+            </h2>
+
+            <div className="rounded-xl border border-border/50 bg-card/30 p-6">
+              <ul className="space-y-3">
+                {botPermissions.map(({ label, note }) => (
+                  <li key={label} className="flex items-center gap-3 text-foreground/80">
+                    <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
+                    {label}
+                    {note && (
+                      <span className="text-sm text-muted-foreground/70">— {note}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
         </div>
-      </section>
-
-      <Separator className="mb-12 bg-border" />
-
-      {/* What Gets Logged */}
-      <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-          What Gets Logged
-        </h2>
-        <ul className="flex flex-col gap-3">
-          {loggedEvents.map((event) => (
-            <li key={event} className="flex items-center gap-3 text-foreground/80">
-              <span className="h-2 w-2 shrink-0 rounded-full bg-green-500" />
-              {event}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <Separator className="mb-12 bg-border" />
-
-      {/* Bot Permissions Required */}
-      <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
-          Bot Permissions Required
-        </h2>
-        <ul className="flex flex-col gap-3">
-          {botPermissions.map((perm) => {
-            const label = typeof perm === "string" ? perm : perm.label;
-            const note = typeof perm === "string" ? null : perm.note;
-            return (
-              <li key={label} className="flex items-center gap-3 text-foreground/80">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
-                {label}
-                {note && (
-                  <span className="text-sm text-muted-foreground/70">— {note}</span>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      </div>
     </main>
   );
 }
