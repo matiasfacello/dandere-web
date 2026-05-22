@@ -3,28 +3,29 @@ import { DashboardSignInButton } from "~/components/dashboard-sign-in";
 
 export function DashboardCta() {
   return (
-    <section className="py-24 px-4">
+    <section className="px-4 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center sm:p-12">
-          <h2 className="mb-3 text-3xl font-bold text-foreground">
+        <div className="border-primary/20 bg-primary/5 rounded-2xl border p-8 text-center sm:p-12">
+          <h2 className="text-foreground mb-3 text-3xl font-bold">
             Keep an eye on your servers
           </h2>
-          <p className="mx-auto mb-8 max-w-xl text-lg text-muted-foreground">
-            Sign in with Discord to see which of your servers have Dandere installed,
-            check tracking status, and get an overview of your bot activity — all in one place.
+          <p className="text-muted-foreground mx-auto mb-8 max-w-xl text-lg">
+            Sign in with Discord to see which of your servers have Dandere
+            installed, check tracking status, and get an overview of your bot
+            activity — all in one place.
           </p>
 
-          <div className="mb-8 flex flex-col items-center justify-center gap-4 text-sm text-muted-foreground sm:flex-row sm:gap-8">
+          <div className="text-muted-foreground mb-8 flex flex-col items-center justify-center gap-4 text-sm sm:flex-row sm:gap-8">
             <div className="flex items-center gap-2">
-              <Server className="h-4 w-4 text-primary" />
+              <Server className="text-primary h-4 w-4" />
               <span>Server tracking status</span>
             </div>
             <div className="flex items-center gap-2">
-              <Mic className="h-4 w-4 text-primary" />
+              <Mic className="text-primary h-4 w-4" />
               <span>Voice activity overview</span>
             </div>
             <div className="flex items-center gap-2">
-              <Activity className="h-4 w-4 text-primary" />
+              <Activity className="text-primary h-4 w-4" />
               <span>Real-time monitoring</span>
             </div>
           </div>

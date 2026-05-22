@@ -17,7 +17,10 @@ export function SignInButton() {
       variant="ghost"
       className="text-muted-foreground hover:text-foreground"
       onClick={() =>
-        authClient.signIn.social({ provider: "discord", callbackURL: "/dashboard" })
+        authClient.signIn.social({
+          provider: "discord",
+          callbackURL: "/dashboard",
+        })
       }
     >
       Sign in
@@ -29,7 +32,7 @@ export function UserMenu({ user }: { user: User }) {
   return (
     <Link
       href="/dashboard"
-      className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-foreground/80 hover:bg-secondary hover:text-foreground transition-colors"
+      className="text-foreground/80 hover:bg-secondary hover:text-foreground flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors"
     >
       <Avatar className="h-6 w-6">
         <AvatarImage src={user.image ?? undefined} alt={user.name} />

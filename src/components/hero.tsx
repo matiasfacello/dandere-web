@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[calc(100vh-3.5rem)] items-center justify-center overflow-hidden pb-16">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-anime opacity-50" />
+      <div className="bg-gradient-anime absolute inset-0 opacity-50" />
 
       {/* Subtle grid pattern */}
       <div
@@ -21,12 +21,12 @@ export function Hero() {
       />
 
       {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-primary/10 blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 h-80 w-80 rounded-full bg-accent/10 blur-3xl animate-pulse delay-1000" />
+      <div className="bg-primary/10 absolute top-1/4 left-1/4 h-96 w-96 animate-pulse rounded-full blur-3xl" />
+      <div className="bg-accent/10 absolute right-1/4 bottom-1/4 h-80 w-80 animate-pulse rounded-full blur-3xl delay-1000" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
         {/* Badge */}
-        <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm text-primary">
+        <div className="border-primary/30 bg-primary/5 text-primary mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm">
           <Sparkles className="h-4 w-4" />
           <span>Voice Channel Tracking Made Simple</span>
         </div>
@@ -39,20 +39,28 @@ export function Hero() {
         </h1>
 
         {/* Subheading */}
-        <p className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground leading-relaxed md:text-xl">
-          Dandere logs every voice channel join, leave, move, and stream event in real time — posted straight to a channel of your choice.
+        <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg leading-relaxed md:text-xl">
+          Dandere logs every voice channel join, leave, move, and stream event
+          in real time — posted straight to a channel of your choice.
         </p>
 
         {/* CTA buttons */}
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a href={inviteUrl} target="_blank" rel="noopener noreferrer">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan px-8 text-base w-full sm:w-auto">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan w-full px-8 text-base sm:w-auto"
+            >
               Add to Discord
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </a>
           <Link href="/docs">
-            <Button size="lg" variant="outline" className="px-8 text-base w-full sm:w-auto">
+            <Button
+              size="lg"
+              variant="outline"
+              className="w-full px-8 text-base sm:w-auto"
+            >
               Read the Docs
             </Button>
           </Link>
@@ -66,8 +74,10 @@ export function Hero() {
             { value: "24/7", label: "Monitoring" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="mb-1 text-3xl font-bold text-foreground md:text-4xl">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div className="text-foreground mb-1 text-3xl font-bold md:text-4xl">
+                {stat.value}
+              </div>
+              <div className="text-muted-foreground text-sm">{stat.label}</div>
             </div>
           ))}
         </div>

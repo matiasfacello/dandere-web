@@ -5,33 +5,44 @@ export function Footer() {
   const inviteUrl = `https://discord.com/api/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&permissions=76800&scope=bot+applications.commands`;
 
   return (
-    <footer className="border-t border-border/50 bg-background/50">
+    <footer className="border-border/50 bg-background/50 border-t">
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 glow-border">
+              <div className="bg-primary/10 glow-border flex h-9 w-9 items-center justify-center rounded-full">
                 <Image src="/logo.png" alt="Dandere" width={42} height={42} />
               </div>
-              <span className="text-lg font-semibold text-foreground">Dandere</span>
+              <span className="text-foreground text-lg font-semibold">
+                Dandere
+              </span>
             </Link>
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Track voice channel connections across your Discord servers with ease.
+            <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
+              Track voice channel connections across your Discord servers with
+              ease.
             </p>
           </div>
 
           {/* Product */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Product</h3>
+            <h3 className="text-foreground mb-4 text-sm font-semibold">
+              Product
+            </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/#features" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/#features"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
                   Features
                 </Link>
               </li>
               <li>
-                <Link href="/docs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/docs"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
                   Documentation
                 </Link>
               </li>
@@ -40,10 +51,15 @@ export function Footer() {
 
           {/* Resources */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Resources</h3>
+            <h3 className="text-foreground mb-4 text-sm font-semibold">
+              Resources
+            </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/docs#commands" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/docs#commands"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
                   Commands
                 </Link>
               </li>
@@ -52,7 +68,7 @@ export function Footer() {
                   href={inviteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
                 >
                   Add to Discord
                 </a>
@@ -62,15 +78,23 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="mb-4 text-sm font-semibold text-foreground">Legal</h3>
+            <h3 className="text-foreground mb-4 text-sm font-semibold">
+              Legal
+            </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/privacy"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link
+                  href="/terms"
+                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                >
                   Terms of Service
                 </Link>
               </li>
@@ -78,8 +102,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Dandere. All rights reserved.</p>
+        <div className="border-border/50 mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
+          <p className="text-muted-foreground text-sm">
+            © {new Date().getFullYear()} Dandere. All rights reserved.
+          </p>
           <div className="flex items-center gap-4">
             <a
               href="https://github.com/matiasfacello/dandere-web"

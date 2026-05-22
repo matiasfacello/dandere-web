@@ -1,5 +1,15 @@
 import { relations } from "drizzle-orm";
-import { boolean, index, integer, pgTable, serial, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  index,
+  integer,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const guild = pgTable(
   "guild",
@@ -11,7 +21,7 @@ export const guild = pgTable(
     ignoreUsers: text("ignoreUsers").array(),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
-  (table) => [uniqueIndex("guild_guildId_key").on(table.guildId)],
+  (table) => [uniqueIndex("guild_guildId_key").on(table.guildId)]
 );
 
 export const guildRelations = relations(guild, ({ many }) => ({
@@ -27,7 +37,10 @@ export const channelTracking = pgTable(
     channelId: varchar("channelId").notNull(),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
-  (table) => [uniqueIndex("voicetrack_guildId_key").on(table.guildId), index("voicetrack_guildId_idx").on(table.guildId)],
+  (table) => [
+    uniqueIndex("voicetrack_guildId_key").on(table.guildId),
+    index("voicetrack_guildId_idx").on(table.guildId),
+  ]
 );
 
 export const channelRelations = relations(channelTracking, ({ one }) => ({
@@ -50,7 +63,11 @@ export const log = pgTable(
     userName: varchar("userName"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
-  (table) => [uniqueIndex("log_id_key").on(table.id), index("log_guildId_idx").on(table.guildId), index("log_userId_idx").on(table.userId)],
+  (table) => [
+    uniqueIndex("log_id_key").on(table.id),
+    index("log_guildId_idx").on(table.guildId),
+    index("log_userId_idx").on(table.userId),
+  ]
 );
 
 export const logRelations = relations(log, ({ one }) => ({
@@ -70,7 +87,7 @@ export const premiumPlans = pgTable(
     price: integer("price").notNull(),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
-  (table) => [uniqueIndex("premium_plans_id_key").on(table.id)],
+  (table) => [uniqueIndex("premium_plans_id_key").on(table.id)]
 );
 
 export const premiumPlanRelations = relations(premiumPlans, ({ many }) => ({
@@ -87,16 +104,22 @@ export const premiumSubscription = pgTable(
     premiumUntil: timestamp("premiumUntil").notNull(),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
-  (table) => [uniqueIndex("premium_id_key").on(table.id), index("premium_guildId_idx").on(table.guildId)],
+  (table) => [
+    uniqueIndex("premium_id_key").on(table.id),
+    index("premium_guildId_idx").on(table.guildId),
+  ]
 );
 
-export const premiumSubscriptionRelations = relations(premiumSubscription, ({ one }) => ({
-  guildId: one(guild, {
-    fields: [premiumSubscription.guildId],
-    references: [guild.guildId],
-  }),
-  planId: one(premiumPlans, {
-    fields: [premiumSubscription.planId],
-    references: [premiumPlans.id],
-  }),
-}));
+export const premiumSubscriptionRelations = relations(
+  premiumSubscription,
+  ({ one }) => ({
+    guildId: one(guild, {
+      fields: [premiumSubscription.guildId],
+      references: [guild.guildId],
+    }),
+    planId: one(premiumPlans, {
+      fields: [premiumSubscription.planId],
+      references: [premiumPlans.id],
+    }),
+  })
+);

@@ -6,7 +6,8 @@ declare global {
   var __db_sql: ReturnType<typeof postgres> | undefined;
 }
 
-const sql = globalThis.__db_sql ?? postgres(process.env.DATABASE_URL!, { max: 5 });
+const sql =
+  globalThis.__db_sql ?? postgres(process.env.DATABASE_URL!, { max: 5 });
 if (process.env.NODE_ENV !== "production") globalThis.__db_sql = sql;
 
 export const db = drizzle({ client: sql });

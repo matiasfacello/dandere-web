@@ -41,14 +41,15 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="px-4 py-24 relative">
+    <section id="features" className="relative px-4 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+          <h2 className="text-foreground mb-4 text-3xl font-bold tracking-tight md:text-4xl">
             What Dandere tracks
           </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Every voice event in your server, logged automatically and delivered straight to a channel of your choice.
+          <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+            Every voice event in your server, logged automatically and delivered
+            straight to a channel of your choice.
           </p>
         </div>
 
@@ -56,15 +57,19 @@ export function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group relative rounded-2xl bg-card/50 border border-border/50 p-6 transition-all duration-300 hover:bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+              className="group bg-card/50 border-border/50 hover:bg-card hover:border-primary/30 hover:shadow-primary/5 relative rounded-2xl border p-6 transition-all duration-300 hover:shadow-lg"
             >
               <div className="mb-4 flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
+                <div className="bg-primary/10 text-primary group-hover:bg-primary/20 flex h-12 w-12 items-center justify-center rounded-xl transition-colors">
                   <feature.icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground">{feature.title}</h3>
+                <h3 className="text-foreground text-lg font-semibold">
+                  {feature.title}
+                </h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
