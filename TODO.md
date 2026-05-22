@@ -106,7 +106,7 @@
 
 ## Phase 9: Dashboard (`/dashboard`)
 
-- [ ] Create `src/app/dashboard/page.tsx` — server component
+- [x] Create `src/app/dashboard/page.tsx` — server component
   - Await session via `auth.api.getSession({ headers: await headers() })` (`headers()` must be awaited in Next.js 16)
   - If no session, redirect to `/` (fallback — `proxy.ts` handles the primary guard)
   - Query `account` table for Discord access token
@@ -115,13 +115,13 @@
   - Compute intersection (mutual guilds)
   - Render user header (avatar + username)
   - Render server cards grid
-- [ ] Create `src/components/server-card.tsx`
+- [x] Create `src/components/server-card.tsx`
   - Server name and icon
   - Tracking status badge (enabled / disabled — read from `guild.trackAll`)
   - Log channel if set (`guild.logChannelId`)
   - Subscription tier badge (all Free currently)
   - "Upgrade" button — placeholder, no action
-- [ ] Create `src/components/user-header.tsx`
+- [x] Create `src/components/user-header.tsx`
   - Discord avatar (shadcn Avatar)
   - Username display
   - Sign-out button (client component)
