@@ -9,9 +9,45 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.BETTER_AUTH_URL ??
+  "http://localhost:3000"; /* fallback for development */
+
 export const metadata: Metadata = {
-  title: "Dandere",
-  description: "Track every voice event in your Discord server",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Dandere",
+    template: "%s — Dandere",
+  },
+  description:
+    "Track every voice event in your Discord server. Dandere logs voice joins, leaves, moves, and streams in real time.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Dandere",
+    title: "Dandere — Discord Voice Activity Tracker",
+    description:
+      "Track every voice event in your Discord server. Dandere logs voice joins, leaves, moves, and streams in real time.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dandere — Discord Voice Activity Tracker",
+    description:
+      "Track every voice event in your Discord server. Dandere logs voice joins, leaves, moves, and streams in real time.",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -54,10 +54,3 @@ Set all environment variables through CapRover's app config — never bake secre
 The site shares the bot's PostgreSQL database (read-only). It reads the `guild` and `premiumSubscription` tables. Better Auth manages its own tables (`user`, `session`, `account`, `verification`) in the same database.
 
 **Never run `drizzle-kit push` or `drizzle-kit migrate`** — the bot owns all migrations. Apply any new tables manually via raw SQL.
-
-## Commit Conventions
-
-```
-feat: short lowercase description
-patch: short lowercase description
-```

@@ -4,9 +4,20 @@ import { CommandList } from "~/components/docs/command-list";
 import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Docs — Dandere",
+  title: "Docs",
   description:
     "Setup guide and command reference for the Dandere Discord voice tracking bot.",
+  openGraph: {
+    title: "Docs — Dandere",
+    description:
+      "Setup guide and command reference for the Dandere Discord voice tracking bot.",
+    url: "/docs",
+  },
+  twitter: {
+    title: "Docs — Dandere",
+    description:
+      "Setup guide and command reference for the Dandere Discord voice tracking bot.",
+  },
 };
 
 const gettingStartedSteps = [

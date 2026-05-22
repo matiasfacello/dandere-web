@@ -11,7 +11,12 @@ import { ServerCard } from "~/components/server-card";
 import { DashboardSignInButton } from "~/components/dashboard-sign-in";
 
 export const metadata: Metadata = {
-  title: "Dashboard — Dandere",
+  title: "Dashboard",
+  description: "Manage your Discord servers and view voice tracking status.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 type DiscordGuild = {

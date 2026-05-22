@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Dandere",
+  title: "Privacy Policy",
   description: "Privacy Policy for the Dandere Discord bot and website.",
+  openGraph: {
+    title: "Privacy Policy — Dandere",
+    description: "Privacy Policy for the Dandere Discord bot and website.",
+    url: "/privacy",
+  },
+  twitter: {
+    title: "Privacy Policy — Dandere",
+    description: "Privacy Policy for the Dandere Discord bot and website.",
+  },
 };
 
 export default function PrivacyPage() {

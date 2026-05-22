@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Dandere",
+  title: "Terms of Service",
   description: "Terms of Service for the Dandere Discord bot and website.",
+  openGraph: {
+    title: "Terms of Service — Dandere",
+    description: "Terms of Service for the Dandere Discord bot and website.",
+    url: "/terms",
+  },
+  twitter: {
+    title: "Terms of Service — Dandere",
+    description: "Terms of Service for the Dandere Discord bot and website.",
+  },
 };
 
 export default function TermsPage() {
