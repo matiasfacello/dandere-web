@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Separator className="bg-zinc-800" />
+      <Separator className="bg-border" />
       <Features />
-      <Separator className="bg-zinc-800" />
+      <Separator className="bg-border" />
       <HowItWorks />
-      <Separator className="bg-zinc-800" />
+      <Separator className="bg-border" />
       <PremiumTeaser />
     </>
   );

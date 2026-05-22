@@ -27,14 +27,14 @@ export function UserHeader({ name, image }: Props) {
           <AvatarFallback>{name[0].toUpperCase()}</AvatarFallback>
         </Avatar>
         <div>
-          <p className="font-semibold text-zinc-100">{name}</p>
-          <p className="text-sm text-zinc-400">Discord account</p>
+          <p className="font-semibold text-foreground">{name}</p>
+          <p className="text-sm text-muted-foreground">Discord account</p>
         </div>
       </div>
       <Button
         size="sm"
         variant="outline"
-        className="border-zinc-700 text-zinc-400 hover:bg-zinc-800 hover:text-zinc-100"
+        className="border-border text-muted-foreground hover:bg-secondary hover:text-foreground"
         onClick={handleSignOut}
       >
         Sign out

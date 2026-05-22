@@ -22,7 +22,7 @@ const gettingStartedSteps = [
     text: (
       <>
         Run{" "}
-        <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-sm text-indigo-400">
+        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
           /trackvoice-all #channel
         </code>{" "}
         to begin logging voice activity to a text channel.
@@ -34,7 +34,7 @@ const gettingStartedSteps = [
     text: (
       <>
         Optionally ignore specific users with{" "}
-        <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-sm text-indigo-400">
+        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
           /trackvoice-ignoreuser @user
         </code>
         .
@@ -46,7 +46,7 @@ const gettingStartedSteps = [
     text: (
       <>
         Run{" "}
-        <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-sm text-indigo-400">
+        <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-sm text-primary">
           /trackvoice-disable
         </code>{" "}
         to stop tracking at any time.
@@ -109,49 +109,49 @@ export default function DocsPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-12">
       <div className="mb-10">
-        <h1 className="text-4xl font-bold tracking-tight text-zinc-100">
+        <h1 className="text-4xl font-bold tracking-tight text-foreground">
           Documentation
         </h1>
-        <p className="mt-2 text-zinc-400">
+        <p className="mt-2 text-muted-foreground">
           Everything you need to set up and use Dandere in your Discord server.
         </p>
       </div>
 
       {/* Getting Started */}
       <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-100">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
           Getting Started
         </h2>
         <ol className="flex flex-col gap-5">
           {gettingStartedSteps.map(({ step, text }) => (
             <li key={step} className="flex gap-4">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-indigo-500 text-sm font-bold text-white">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                 {step}
               </span>
-              <p className="pt-0.5 text-zinc-300 leading-relaxed">{text}</p>
+              <p className="pt-0.5 text-foreground/80 leading-relaxed">{text}</p>
             </li>
           ))}
         </ol>
       </section>
 
-      <Separator className="mb-12 bg-zinc-800" />
+      <Separator className="mb-12 bg-border" />
 
       {/* Command Reference */}
       <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-100">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
           Command Reference
         </h2>
-        <div className="overflow-x-auto rounded-lg border border-zinc-800">
+        <div className="overflow-x-auto rounded-lg border border-border">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-zinc-800 bg-zinc-900">
-                <th className="px-4 py-3 text-left font-semibold text-zinc-300">
+              <tr className="border-b border-border bg-card">
+                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
                   Command
                 </th>
-                <th className="px-4 py-3 text-left font-semibold text-zinc-300">
+                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
                   Description
                 </th>
-                <th className="px-4 py-3 text-left font-semibold text-zinc-300">
+                <th className="px-4 py-3 text-left font-semibold text-foreground/80">
                   Permission
                 </th>
               </tr>
@@ -161,21 +161,21 @@ export default function DocsPage() {
                 <tr
                   key={row.command}
                   className={
-                    i < commands.length - 1 ? "border-b border-zinc-800" : ""
+                    i < commands.length - 1 ? "border-b border-border" : ""
                   }
                 >
                   <td className="px-4 py-3 align-top">
-                    <code className="rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-indigo-400">
+                    <code className="rounded bg-secondary px-1.5 py-0.5 font-mono text-primary">
                       {row.command}
                     </code>
                   </td>
-                  <td className="px-4 py-3 align-top text-zinc-400">
+                  <td className="px-4 py-3 align-top text-muted-foreground">
                     {row.description}
                   </td>
                   <td className="px-4 py-3 align-top">
                     <Badge
                       variant="outline"
-                      className="border-zinc-700 text-zinc-400 whitespace-nowrap"
+                      className="border-border text-muted-foreground whitespace-nowrap"
                     >
                       {row.permission}
                     </Badge>
@@ -187,16 +187,16 @@ export default function DocsPage() {
         </div>
       </section>
 
-      <Separator className="mb-12 bg-zinc-800" />
+      <Separator className="mb-12 bg-border" />
 
       {/* What Gets Logged */}
       <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-100">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
           What Gets Logged
         </h2>
         <ul className="flex flex-col gap-3">
           {loggedEvents.map((event) => (
-            <li key={event} className="flex items-center gap-3 text-zinc-300">
+            <li key={event} className="flex items-center gap-3 text-foreground/80">
               <span className="h-2 w-2 shrink-0 rounded-full bg-green-500" />
               {event}
             </li>
@@ -204,11 +204,11 @@ export default function DocsPage() {
         </ul>
       </section>
 
-      <Separator className="mb-12 bg-zinc-800" />
+      <Separator className="mb-12 bg-border" />
 
       {/* Bot Permissions Required */}
       <section className="mb-12">
-        <h2 className="mb-6 text-2xl font-bold tracking-tight text-zinc-100">
+        <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
           Bot Permissions Required
         </h2>
         <ul className="flex flex-col gap-3">
@@ -216,11 +216,11 @@ export default function DocsPage() {
             const label = typeof perm === "string" ? perm : perm.label;
             const note = typeof perm === "string" ? null : perm.note;
             return (
-              <li key={label} className="flex items-center gap-3 text-zinc-300">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-indigo-500" />
+              <li key={label} className="flex items-center gap-3 text-foreground/80">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-primary" />
                 {label}
                 {note && (
-                  <span className="text-sm text-zinc-500">— {note}</span>
+                  <span className="text-sm text-muted-foreground/70">— {note}</span>
                 )}
               </li>
             );

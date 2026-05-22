@@ -74,12 +74,12 @@ export default async function DashboardPage() {
         <UserHeader name={session.user.name} image={session.user.image} />
       </div>
 
-      <h2 className="mb-1 text-xl font-bold text-zinc-100">Your servers</h2>
-      <p className="mb-6 text-sm text-zinc-400">Servers where both you and Dandere are present.</p>
+      <h2 className="mb-1 text-xl font-bold text-foreground">Your servers</h2>
+      <p className="mb-6 text-sm text-muted-foreground">Servers where both you and Dandere are present.</p>
 
       {mutualGuilds.length === 0 ? (
-        <div className="rounded-lg border border-zinc-800 bg-zinc-900 px-6 py-12 text-center">
-          <p className="text-zinc-400">No mutual servers found. Add Dandere to a server you&apos;re in to see it here.</p>
+        <div className="rounded-lg border border-border bg-card px-6 py-12 text-center">
+          <p className="text-muted-foreground">No mutual servers found. Add Dandere to a server you&apos;re in to see it here.</p>
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

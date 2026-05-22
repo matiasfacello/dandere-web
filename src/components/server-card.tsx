@@ -21,32 +21,32 @@ export function ServerCard({ name, icon, guildId, trackAll }: Props) {
     .toUpperCase();
 
   return (
-    <Card className="border-zinc-800 bg-zinc-900">
+    <Card className="border-border bg-card">
       <CardHeader className="pb-3">
         <div className="flex items-center gap-3">
           {iconUrl ? (
             <Image src={iconUrl} alt={name} width={40} height={40} className="rounded-full" />
           ) : (
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-sm font-semibold text-zinc-300">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-sm font-semibold text-foreground/80">
               {initials}
             </div>
           )}
-          <p className="font-semibold text-zinc-100 leading-tight">{name}</p>
+          <p className="font-semibold text-foreground leading-tight">{name}</p>
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-3">
         <div className="flex flex-wrap gap-2">
           <Badge
             variant="outline"
-            className={trackAll ? "border-green-500/30 bg-green-500/10 text-green-400" : "border-zinc-700 bg-zinc-800 text-zinc-400"}
+            className={trackAll ? "border-green-500/30 bg-green-500/10 text-green-400" : "border-border bg-secondary text-muted-foreground"}
           >
             {trackAll ? "Tracking enabled" : "Tracking disabled"}
           </Badge>
-          <Badge variant="outline" className="border-zinc-700 text-zinc-400">
+          <Badge variant="outline" className="border-border text-muted-foreground">
             Free
           </Badge>
         </div>
-        <Button size="sm" variant="outline" disabled className="mt-1 w-full border-zinc-700 text-zinc-500 cursor-not-allowed">
+        <Button size="sm" variant="outline" disabled className="mt-1 w-full border-border text-muted-foreground/60 cursor-not-allowed">
           Upgrade
         </Button>
       </CardContent>

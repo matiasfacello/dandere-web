@@ -21,7 +21,7 @@ export function SignInButton() {
     <Button
       size="sm"
       variant="ghost"
-      className="text-zinc-400 hover:text-zinc-100"
+      className="text-muted-foreground hover:text-foreground"
       onClick={() =>
         authClient.signIn.social({ provider: "discord", callbackURL: "/dashboard" })
       }
@@ -43,7 +43,7 @@ export function UserMenu({ user }: { user: User }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-100 transition-colors">
+        <button className="flex items-center gap-2 rounded-md px-2 py-1.5 text-sm text-foreground/80 hover:bg-secondary hover:text-foreground transition-colors">
           <Avatar className="h-6 w-6">
             <AvatarImage src={user.image ?? undefined} alt={user.name} />
             <AvatarFallback className="text-xs">
