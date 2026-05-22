@@ -96,13 +96,13 @@
 
 ## Phase 8: Docs Page (`/docs`)
 
-- [ ] Create `src/app/docs/page.tsx` — static React, no MDX
-- [ ] Sections to include:
+- [x] Create `src/app/docs/page.tsx` — static React, no MDX
+- [x] Sections to include:
   - Getting Started (4 steps)
   - Command Reference (table with all 6 commands, descriptions, permissions)
   - What Gets Logged (4 event types)
   - Bot Permissions Required (4 permissions)
-- [ ] Add page metadata (title, description)
+- [x] Add page metadata (title, description)
 
 ## Phase 9: Dashboard (`/dashboard`)
 
