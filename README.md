@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dandere Website
 
-## Getting Started
+Marketing site and user dashboard for the [Dandere](https://github.com/matiasfacello/dandere) Discord bot — a voice channel activity tracker that logs joins, leaves, moves, and stream events in real time.
 
-First, run the development server:
+## Pages
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- `/` — Landing page with hero, feature grid, how-it-works, and premium teaser
+- `/docs` — Static command reference and setup guide
+- `/dashboard` — Authenticated area showing mutual servers and bot status per server
+- `/privacy` — Privacy Policy (required for Discord bot verification)
+- `/terms` — Terms of Service (required for Discord bot verification)
+
+## Tech Stack
+
+- **Next.js 16** — App Router, TypeScript, `output: "standalone"` for Docker
+- **Tailwind CSS** + **shadcn/ui** — dark mode only
+- **Better Auth** — Discord OAuth2 (`identify` + `guilds` scopes)
+- **Drizzle ORM** — reads the same PostgreSQL database as the bot (no writes)
+
+## Local Development
+
+1. Copy `.env.example` to `.env` and fill in all values:
+
+```env
+DATABASE_URL=           # Same PostgreSQL connection string as the bot
+DISCORD_CLIENT_ID=      # Same as the bot's APP_ID
+DISCORD_CLIENT_SECRET=  # From Discord Developer Portal → OAuth2
+BETTER_AUTH_SECRET=     # Run: openssl rand -base64 32
+BETTER_AUTH_URL=        # http://localhost:3000 for local dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Run the dev server:
 
-## Learn More
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deployed as a Docker container on CapRover. The `Dockerfile` uses a multi-stage build targeting `.next/standalone`.
 
-## Deploy on Vercel
+Set all environment variables through CapRover's app config — never bake secrets into the image.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Database
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site shares the bot's PostgreSQL database (read-only). It reads the `guild` and `premiumSubscription` tables. Better Auth manages its own tables (`user`, `session`, `account`, `verification`) in the same database.
+
+**Never run `drizzle-kit push` or `drizzle-kit migrate`** — the bot owns all migrations. Apply any new tables manually via raw SQL.
+
+## Commit Conventions
+
+```
+feat: short lowercase description
+patch: short lowercase description
+```
