@@ -326,3 +326,17 @@ No scope, no ticket numbers, no capital letters, no Co-Authored-By lines.
 - Do not modify the shared database schema — read only, and copy table definitions rather than importing from the bot repo
 - Never run `drizzle-kit push` or `drizzle-kit migrate` — apply DB changes manually via raw SQL
 - Always use `~/` path alias, never `@/`
+
+## TODO Headlines block
+
+`TODO.md` opens with a `## Headlines` block — one line per live item, size-tagged
+(`S`/`M`/`L`), with `[you]` marking the ones that need a human. It exists so
+`../_manager` can survey every repo without reading full TODO files.
+
+**When you change TODO.md, update the Headlines block too,** then refresh its stamp:
+
+```bash
+cd ../_manager && source lib.sh && stamp <workdir> <todo files>
+```
+
+Spec: `../_manager/TEMPLATE.md`. A stale block gets flagged by `_manager/todos.sh`.
