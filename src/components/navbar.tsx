@@ -19,7 +19,13 @@ export async function Navbar() {
           </span>
         </Link>
 
-        <NavLinks session={session} />
+        <NavLinks
+          session={
+            session
+              ? { user: { name: session.user.name, image: session.user.image } }
+              : null
+          }
+        />
       </div>
     </header>
   );
